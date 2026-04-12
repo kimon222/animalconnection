@@ -71,6 +71,49 @@
     updateHeader();
   }, { passive: true });
 
+  /* ── Contact forms (Resend via /api/contact on Vercel) ── */
+  function wireContactForm(form) {
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var honey = form.querySelector('.c-form-honeypot');
+      if (honey && honey.value) return;
+
+      var btn = form.querySelector('button[type="submit"]');
+      var data = new FormData(form);
+      var payload = {
+        name: data.get('name'),
+        email: data.get('email'),
+        phone: data.get('phone'),
+        message: data.get('message'),
+      };
+
+      if (btn) btn.disabled = true;
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Request failed');
+          return res.json();
+        })
+        .then(function () {
+          alert('Message sent!');
+          form.reset();
+        })
+        .catch(function () {
+          alert('Something went wrong. Please try again or email us directly.');
+        })
+        .finally(function () {
+          if (btn) btn.disabled = false;
+        });
+    });
+  }
+
+  wireContactForm(document.getElementById('contact-form'));
+  wireContactForm(document.getElementById('home-contact-form'));
+
   /* ── Init ── */
   updateHeader();
   updateProgress();

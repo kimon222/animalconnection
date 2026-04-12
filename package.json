@@ -1,0 +1,8 @@
+{
+  "name": "animalconnection",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "resend": "^4.8.0"
+  }
+}

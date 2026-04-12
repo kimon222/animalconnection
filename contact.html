@@ -89,17 +89,7 @@
           <div class="reveal reveal-delay-2">
             <div class="section-eyebrow">Send a message</div>
             <h2 class="content-h2" style="margin-bottom:1.5rem;">What's on<br /><em style="font-style:italic;color:var(--gold-light);">your mind?</em></h2>
-            <!--
-              FormSubmit (no backend): messages go to the email in the form action.
-              First time only, FormSubmit emails that inbox a link to activate the form.
-              Test from a real URL (e.g. local: python3 -m http.server), not file:// — referer matters for some providers.
-            -->
-            <form
-              class="c-form"
-              action="https://formspree.io/f/mjgpnnlw"
-              method="POST"
-            >
-              <input type="hidden" name="_subject" value="Website contact — The Animal Connection" />
+            <form id="contact-form" class="c-form" action="/api/contact" method="post">
               <input type="text" name="_honey" class="c-form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div>
                 <label for="name">Your name</label>
@@ -111,7 +101,7 @@
               </div>
               <div>
                 <label for="phone">Phone number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(415) 000-0000" autocomplete="tel" />
+                <input type="tel" id="phone" name="phone" placeholder="(415) 000-0000" autocomplete="tel" required />
               </div>
               <div>
                 <label for="message">Your message</label>
