@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Animal Connection — SF's Largest Independent Pet Store Since 1987</title>
+  <meta name="description" content="San Francisco's largest independent pet store since 1987. Boarding, grooming, rescue, and the best premium pet supplies in the city." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Homepage-specific additions ── */
+
+    /* Hero animal emoji parade */
+    .hero-parade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 38%;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .parade-item {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      opacity: 0.055;
+      animation: paradeFloat var(--dur, 6s) ease-in-out infinite alternate;
+      transform-origin: bottom center;
+      filter: grayscale(1);
+      flex-shrink: 0;
+      padding: 0 0.5rem;
+    }
+    @keyframes paradeFloat {
+      from { transform: translateY(0) rotate(-2deg); }
+      to   { transform: translateY(-12px) rotate(2deg); }
+    }
+
+    /* Stat bar */
+    .stat-bar {
+      background: var(--ink-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      padding: 2rem 0;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-mute);
+    }
+
+    /* Mission strip */
+    .mission {
+      background: var(--ink);
+      padding: 7rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .mission-left {}
+    .mission-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--cream);
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .mission-attr {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-left: 1.5rem;
+    }
+    .mission-right {}
+    .mission-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--cream-dim);
+    }
+    .mission-body p { margin-bottom: 1rem; }
+    .mission-body strong { color: var(--cream); font-weight: 500; }
+
+    /* NEW ownership banner */
+    .ownership-banner {
+      background: linear-gradient(90deg, rgba(201,151,58,0.12) 0%, rgba(201,151,58,0.06) 50%, transparent 100%);
+      border: 1px solid var(--border-mid);
+      border-radius: 6px;
+      padding: 1.1rem 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .ownership-banner-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(201,151,58,0.4); }
+      50% { box-shadow: 0 0 0 6px rgba(201,151,58,0); }
+    }
+    .ownership-banner-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--cream-dim);
+    }
+    .ownership-banner-text strong { color: var(--gold-light); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .stat-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 0 1.5rem; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+      .stat:nth-last-child(-n+2) { border-bottom: none; }
+      .mission { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="read-progress"></div>
+
+  <!-- ════ NAVIGATION ════ -->
+  <header class="site-header">
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+        <span class="logo-text">the animal connection</span>
+      </a>
+    </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="#services">Services</a>
+          <ul class="dropdown">
+            <li><a href="boarding.html">Boarding</a></li>
+            <li><a href="grooming.html">Grooming</a></li>
+            <li><a href="surrender.html">Surrender</a></li>
+            <li><a href="keepyourpet.html">Pet Food Bank</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ════ HERO — "A place apart" ════ -->
+    <section class="hero">
+      <div class="hero-atmosphere"></div>
+
+      <!-- Silhouette strip — abstract animal shapes in pure CSS/SVG -->
+      <div class="hero-silhouettes" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bird flock silhouettes -->
+          <ellipse cx="200" cy="80" rx="28" ry="8" transform="rotate(-15,200,80)" />
+          <ellipse cx="260" cy="55" rx="22" ry="6" transform="rotate(-10,260,55)" />
+          <ellipse cx="310" cy="70" rx="18" ry="5" transform="rotate(-20,310,70)" />
+          <ellipse cx="700" cy="40" rx="32" ry="9" transform="rotate(-8,700,40)" />
+          <ellipse cx="760" cy="60" rx="20" ry="6" transform="rotate(-15,760,60)" />
+          <ellipse cx="1100" cy="90" rx="26" ry="7" transform="rotate(-12,1100,90)" />
+          <ellipse cx="1180" cy="65" rx="18" ry="5" transform="rotate(-18,1180,65)" />
+          <!-- Tree branch -->
+          <path d="M0 300 Q180 260 360 280 Q540 300 720 270 Q900 240 1080 265 Q1260 290 1440 275 L1440 320 L0 320 Z" />
+        </svg>
+      </div>
+
+      <!-- Floating animal emoji silhouettes -->
+      <div class="hero-parade" aria-hidden="true">
+        <span class="parade-item" style="--dur:7s;animation-delay:0s;">🐦</span>
+        <span class="parade-item" style="--dur:5s;animation-delay:0.5s;">🦜</span>
+        <span class="parade-item" style="--dur:8s;animation-delay:1s;">🐰</span>
+        <span class="parade-item" style="--dur:6s;animation-delay:1.8s;">🦎</span>
+        <span class="parade-item" style="--dur:9s;animation-delay:0.3s;">🐹</span>
+        <span class="parade-item" style="--dur:5.5s;animation-delay:2s;">🐢</span>
+        <span class="parade-item" style="--dur:7.5s;animation-delay:0.8s;">🦔</span>
+        <span class="parade-item" style="--dur:6.5s;animation-delay:1.5s;">🐍</span>
+        <span class="parade-item" style="--dur:8.5s;animation-delay:0.2s;">🦗</span>
+        <span class="parade-item" style="--dur:7s;animation-delay:1.2s;">🐠</span>
+        <span class="parade-item" style="--dur:5.5s;animation-delay:0.7s;">🐟</span>
+        <span class="parade-item" style="--dur:6s;animation-delay:2.5s;">🐦</span>
+      </div>
+
+      <div class="hero-content reveal">
+        <p class="hero-since">Est. 1987 &nbsp;·&nbsp; San Francisco, California</p>
+        <h1 class="hero-headline">
+          Where <em>every</em><br />animal<br /><strong>is family.</strong>
+        </h1>
+        <p class="hero-sub">
+          San Francisco's largest independent pet store. Not your typical pet shop — we are lifelong animal lovers who carry premium supplies, board and groom small animals, rescue pets in need, and have called Irving Street home for nearly four decades.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn">Get in Touch</a>
+          <a href="#services" class="btn btn-ghost">Our Services</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ════ STAT BAR ════ -->
+    <div class="stat-bar">
+      <div class="stat-bar-inner">
+        <div class="stat reveal">
+          <div class="stat-number">37+</div>
+          <div class="stat-label">Years in SF</div>
+        </div>
+        <div class="stat reveal reveal-delay-1">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Years boarding</div>
+        </div>
+        <div class="stat reveal reveal-delay-2">
+          <div class="stat-number">100s</div>
+          <div class="stat-label">Animals rescued</div>
+        </div>
+        <div class="stat reveal reveal-delay-3">
+          <div class="stat-number">Free</div>
+          <div class="stat-label">Pet food bank</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ NEW OWNERSHIP / MISSION ════ -->
+    <div style="background:var(--ink);">
+      <div class="mission">
+        <div class="mission-left reveal">
+          <p class="mission-quote">"To us, each pet is unique and is family, so we strive to find the perfect fit between people and their pets."</p>
+          <p class="mission-attr">The Animal Connection</p>
+          <div class="ownership-banner">
+            <div class="ownership-banner-dot"></div>
+            <p class="ownership-banner-text"><strong>Under new ownership.</strong> We are continuing all boarding services with no lapse in operations — and we're excited for what's next. Thanks for being a loyal supporter through all our seasons.</p>
+          </div>
+        </div>
+        <div class="mission-right reveal reveal-delay-2">
+          <div class="section-eyebrow">Who we are</div>
+          <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:1.25rem;">SF's largest<br /><em>independent</em> pet store</h2>
+          <div class="mission-body">
+            <p>Since 1987 we have been the city's go-to for expert animal advice, premium pet diets, and genuine care. Our staff doesn't just work with animals — they live with them, advocate for them, and know them.</p>
+            <p>We <strong>do not sell dogs, cats, or rabbits</strong> and always suggest adoption. We do not support breeding mills. We work closely with rescue organisations and responsible local breeders to save as many animals as we can.</p>
+            <p>Come in and feel the difference a truly independent, animal-first store makes.</p>
+          </div>
+          <a href="about.html" class="btn" style="margin-top:1.75rem;">Our Story</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-glyph">✦</div>
+    </div>
+
+    <!-- ════ SERVICES ════ -->
+    <div class="services-bg" id="services">
+      <div class="services-section">
+        <div class="reveal">
+          <div class="section-eyebrow">What we do</div>
+          <h2 class="section-title">Expert care,<br /><em>every day</em></h2>
+        </div>
+        <div class="services-grid reveal reveal-delay-1">
+
+          <article class="service-card">
+            <div class="service-num">01</div>
+            <h3 class="service-name">Boarding</h3>
+            <p class="service-desc">Over 30 years boarding birds, small mammals, and reptiles. We care for your animals like we do our own — fresh food, daily checks, expert hands only.</p>
+            <a href="boarding.html" class="service-link">Reserve a spot</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-num">02</div>
+            <h3 class="service-name">Grooming</h3>
+            <p class="service-desc">Nail trims, wing clips, and more for birds, guinea pigs, and rabbits. Quick, calm, and carried out only by our trained staff — never rushed, always careful.</p>
+            <a href="grooming.html" class="service-link">See grooming fees</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-num">03</div>
+            <h3 class="service-name">Surrender</h3>
+            <p class="service-desc">No longer able to care for a pet? We accept most small animals with no surrender fee. We know it's a big decision — we'll be here whenever you're ready.</p>
+            <a href="surrender.html" class="service-link">Learn more</a>
+          </article>
+
+        </div>
+
+        <!-- Pet Food Bank bonus card -->
+        <div class="reveal reveal-delay-2" style="margin-top:1.5px;">
+          <div style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:1.5rem 2rem;background:rgba(201,151,58,0.05);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div>
+              <div class="section-eyebrow" style="margin-bottom:0.3rem;">Community</div>
+              <p style="font-family:var(--serif);font-size:1.2rem;color:var(--cream);">Pet Food Bank — <em>free food for pets in need</em></p>
+            </div>
+            <a href="keepyourpet.html" class="btn btn-ghost" style="white-space:nowrap;flex-shrink:0;">Find out more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-glyph">✦</div>
+    </div>
+
+    <!-- ════ HANDFED BUDGIE FEATURE ════ -->
+    <div style="background:var(--ink);">
+      <div class="feature-section">
+        <div class="feature-visual reveal">
+          <div class="feature-frame">
+            <img src="images/handfed-budgie.png" width="640" height="520" alt="A small lavender and white baby budgie perched calmly on a hand, from our hand-feeding programme." loading="lazy" decoding="async" />
+            <div class="feature-frame-label">Handfed · 2025</div>
+          </div>
+          <div class="feature-corner">🦜</div>
+        </div>
+        <div class="feature-text reveal reveal-delay-2">
+          <p class="feature-kicker">Featured programme</p>
+          <h2 class="feature-title">Handfed</h2>
+          <p class="feature-title-sub">Baby Budgie Programme</p>
+          <p class="feature-body">The Budgerigar — "budgie" — is a small parrot from Australia with one of the largest speech capabilities of any bird its size. They make great companions for all kinds of people, including children. After we finish hand-feeding them, they're sweet, playful, curious birds that genuinely bond with their humans.</p>
+          <p class="feature-body" style="margin-bottom:0;">They're one of the only birds we recommend for kids — and one of our greatest joys.</p>
+          <a href="contact.html" class="btn" style="margin-top:2rem;">Ask about availability</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-glyph">✦</div>
+    </div>
+
+    <!-- ════ GREENS / DONATIONS ════ -->
+    <div class="greens-bg">
+      <div class="greens-section">
+        <div class="reveal">
+          <div class="section-eyebrow">We accept donations</div>
+          <h2 class="section-title">Greens for<br /><em>small mammals</em></h2>
+          <p class="section-lead" style="margin-bottom:0;">Donate fresh produce and we'll feed our rescues. Leftovers go to local shelters. Here's what helps — and what doesn't.</p>
+        </div>
+        <div class="greens-grid reveal reveal-delay-1">
+          <div class="greens-col yes">
+            <div class="greens-col-head yes">✓ &nbsp;Acceptable produce</div>
+            <ul>
+              <li>Romaine, Red &amp; Green leaf lettuce</li>
+              <li>Dandelion Greens</li>
+              <li>Carrot Tops</li>
+              <li>Chard (swiss or rainbow)</li>
+              <li>Wheatgrass</li>
+              <li>Mustard Greens</li>
+            </ul>
+          </div>
+          <div class="greens-col no">
+            <div class="greens-col-head no">✕ &nbsp;Please avoid</div>
+            <ul>
+              <li>Iceberg lettuce</li>
+              <li>Cucumber</li>
+              <li>Tomato</li>
+              <li>Celery</li>
+              <li>Broccoli</li>
+              <li>Avocado</li>
+              <li>Potato</li>
+            </ul>
+          </div>
+        </div>
+        <p class="reveal reveal-delay-2" style="font-size:0.83rem;font-weight:300;color:var(--cream-mute);margin-top:1.5rem;">We also accept pet food (opened or recently expired), clean towels, used tanks and cages, substrate, decor, and food bowls — all go to animals in need.</p>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-glyph">✦</div>
+    </div>
+
+    <!-- ════ TESTIMONIALS ════ -->
+    <div class="testimonials-bg">
+      <div class="testimonials-section">
+        <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+          <div class="section-eyebrow" style="justify-content:center;">From the community</div>
+          <h2 class="section-title">Animal lovers<br /><em>recommend</em></h2>
+        </div>
+        <div class="testimonials-grid">
+          <blockquote class="testimonial reveal">
+            <p>"The staff truly cares about my pets' health and happiness. Their advice over the years for my dog, cats, gecko and boa constrictor ensured my family cared for our pets responsibly and with confidence."</p>
+            <cite>— Rob S.</cite>
+          </blockquote>
+          <blockquote class="testimonial reveal reveal-delay-1">
+            <p>"The best local pet shop a pet mom could ever ask for! Always something new and fun to bring home. An all around excellent place with an old-timey feel to it. Grateful to lean on their expert staff. A true staple of the community!"</p>
+            <cite>— Maria R.</cite>
+          </blockquote>
+          <blockquote class="testimonial reveal reveal-delay-2">
+            <p>"The staff really know their stuff! I'm so happy to find a local pet shop where I feel welcome — and so does my dog Tripper. We've been shopping at the AC for over 5 years. They have great prices and are the real deal!"</p>
+            <cite>— Michelle B.</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ CONTACT BAND ════ -->
+    <div class="contact-band" id="contact">
+      <div class="contact-section">
+        <div class="reveal">
+          <div class="section-eyebrow">Find us</div>
+          <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:1.5rem;">Come say<br /><em>hello</em></h2>
+          <p class="contact-biz">The Animal Connection</p>
+          <p class="contact-line">
+            3401 Irving St., San Francisco, CA 94122<br />
+            (Southwest corner of 35th Avenue)
+          </p>
+          <p class="contact-line" style="margin-top:0.75rem;">
+            Tel &nbsp;<a href="tel:4155646482">415-564-6482</a><br />
+            SMS &nbsp;<a href="sms:4152751139">415-275-1139</a><br />
+            Email &nbsp;<a href="mailto:animalconnectionsf@gmail.com">animalconnectionsf@gmail.com</a>
+          </p>
+          <p class="contact-hours-head">Hours</p>
+          <p class="contact-line">
+            Monday – Saturday &nbsp;11:00 AM – 6:00 PM<br />
+            Sunday &nbsp;12:00 PM – 6:00 PM
+          </p>
+          <p style="margin-top:0.75rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:500;">Special holiday hours apply</p>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <div class="section-eyebrow" style="margin-bottom:1.5rem;">Send us a message</div>
+          <form class="c-form" action="#" method="post">
+            <div>
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" />
+            </div>
+            <div>
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" />
+            </div>
+            <div>
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(415) 000-0000" />
+            </div>
+            <div>
+              <label for="message">Your message</label>
+              <textarea id="message" name="message" placeholder="Ask about boarding, grooming, or anything else…"></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2025 The Animal Connection, San Francisco</span>
+    <span>3401 Irving St. &nbsp;·&nbsp; <a href="tel:4155646482">415-564-6482</a></span>
+    <a href="index.html">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

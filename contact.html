@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | The Animal Connection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="read-progress"></div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <span class="logo-text">the animal connection</span>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#services">Services</a>
+          <ul class="dropdown">
+            <li><a href="boarding.html">Boarding</a></li>
+            <li><a href="grooming.html">Grooming</a></li>
+            <li><a href="surrender.html">Surrender</a></li>
+            <li><a href="keepyourpet.html">Pet Food Bank</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-atmosphere"></div>
+      <div class="page-hero-content">
+        <div class="section-eyebrow reveal">We'd love to hear from you</div>
+        <h1 class="page-hero-title reveal reveal-delay-1">
+          Get in <em>Touch</em>
+        </h1>
+        <p class="page-hero-lead reveal reveal-delay-2">
+          Questions about boarding, grooming, surrendering a pet, or anything else — reach out and we'll get back to you.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-content">
+
+      <div class="content-section">
+        <div class="content-cols">
+
+          <!-- Contact info -->
+          <div class="reveal">
+            <div class="section-eyebrow">Find us</div>
+            <h2 class="content-h2">The Animal<br /><em style="font-style:italic;color:var(--gold-light);">Connection</em></h2>
+
+            <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+              <div>
+                <p style="font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Address</p>
+                <p class="contact-line">3401 Irving Street<br />San Francisco, CA 94122<br /><span style="font-size:0.82rem;color:var(--cream-mute);">(Southwest corner of 35th Avenue)</span></p>
+              </div>
+              <div>
+                <p style="font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Phone &amp; SMS</p>
+                <p class="contact-line">Tel &nbsp;<a href="tel:4155646482">(415) 564-6482</a><br />SMS &nbsp;<a href="sms:4152751139">(415) 275-1139</a></p>
+              </div>
+              <div>
+                <p style="font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Email</p>
+                <p class="contact-line"><a href="mailto:animalconnectionsf@gmail.com">animalconnectionsf@gmail.com</a></p>
+              </div>
+              <div>
+                <p style="font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Hours</p>
+                <p class="contact-line">Mon – Sat: 11:00 AM – 6:00 PM<br />Sunday: 12:00 PM – 6:00 PM</p>
+                <p style="margin-top:0.5rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:500;">Special holiday hours apply</p>
+              </div>
+              <div>
+                <p style="font-size:0.68rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Surrendering a pet?</p>
+                <p class="contact-line" style="font-size:0.88rem;">Please <a href="surrender.html">visit the surrender page</a> first for details and the waiting list.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="reveal reveal-delay-2">
+            <div class="section-eyebrow">Send a message</div>
+            <h2 class="content-h2" style="margin-bottom:1.5rem;">What's on<br /><em style="font-style:italic;color:var(--gold-light);">your mind?</em></h2>
+            <!--
+              FormSubmit (no backend): messages go to the email in the form action.
+              First time only, FormSubmit emails that inbox a link to activate the form.
+              Test from a real URL (e.g. local: python3 -m http.server), not file:// — referer matters for some providers.
+            -->
+            <form
+              class="c-form"
+              action="https://formspree.io/f/mjgpnnlw"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="Website contact — The Animal Connection" />
+              <input type="text" name="_honey" class="c-form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div>
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
+              </div>
+              <div>
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(415) 000-0000" autocomplete="tel" />
+              </div>
+              <div>
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" placeholder="Ask about boarding reservations, grooming availability, surrenders, or anything else…" required></textarea>
+              </div>
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donations section -->
+      <div class="content-section reveal">
+        <div class="section-eyebrow">Community</div>
+        <h2 class="content-h2">Donations <em style="font-style:italic;color:var(--gold-light);">welcome</em></h2>
+        <div class="content-cols">
+          <div>
+            <p class="content-p">We take donations for all pets. Pet food is used for our pet food bank — where we give free food to pet parents. All extra food goes to local shelters. We accept food that is opened or recently expired.</p>
+            <p class="content-p">Clean towels are used for cleaning up after animals. Any unused towels go to local shelters.</p>
+          </div>
+          <div>
+            <p class="content-p">We accept fresh veggies and fruit for our small mammals, reptiles, and birds — favourites include romaine, green and red leaf lettuce, chard, bananas, and bell peppers.</p>
+            <p class="content-p">We also accept used tanks, cages, enclosures, substrate, decor, and food bowls/water bottles. Please try to disinfect donations before drop-off.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2025 The Animal Connection, San Francisco</span>
+    <span>3401 Irving St. &nbsp;·&nbsp; <a href="tel:4155646482">415-564-6482</a></span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

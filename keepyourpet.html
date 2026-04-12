@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Food Bank | The Animal Connection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="read-progress"></div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <span class="logo-text">the animal connection</span>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#services">Services</a>
+          <ul class="dropdown">
+            <li><a href="boarding.html">Boarding</a></li>
+            <li><a href="grooming.html">Grooming</a></li>
+            <li><a href="surrender.html">Surrender</a></li>
+            <li><a href="keepyourpet.html">Pet Food Bank</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-atmosphere"></div>
+      <div class="page-hero-content">
+        <div class="section-eyebrow reveal">Community · Free</div>
+        <h1 class="page-hero-title reveal reveal-delay-1">
+          Pet <em>Food Bank</em>
+        </h1>
+        <p class="page-hero-lead reveal reveal-delay-2">
+          Free food for pet owners who need it. All leftover donations go directly to local shelters.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-content">
+      <div class="content-section reveal">
+        <div class="notice">
+          <strong>We are very low on donations</strong>
+          <p>You may need to wait a few days or weeks before we can schedule a pick-up appointment. We have many requests and limited volunteer capacity. <strong>Please call us if you are in urgent need of free pet food.</strong></p>
+        </div>
+
+        <div class="content-cols" style="margin-top:3rem;">
+          <div>
+            <div class="section-eyebrow">Need food?</div>
+            <h2 class="content-h2">How to <em style="font-style:italic;color:var(--gold-light);">get help</em></h2>
+            <p class="content-p">Call us and we'll set up a time for you to pick up free pet food. We serve all kinds of pets and appreciate your patience as we do our best with available donations.</p>
+            <a href="tel:4155646482" class="btn" style="margin-top:1rem;">Call 415-564-6482</a>
+          </div>
+          <div>
+            <div class="section-eyebrow">Want to donate?</div>
+            <h2 class="content-h2">What we <em style="font-style:italic;color:var(--gold-light);">accept</em></h2>
+            <ul class="item-list">
+              <li>Pet food — opened or recently expired is fine</li>
+              <li>Clean towels — used for cleaning, extras go to shelters</li>
+              <li>Fresh vegetables and fruit for small mammals, reptiles, and birds (romaine, leaf lettuce, chard, bananas, bell peppers)</li>
+              <li>Used tanks, cages, and enclosures</li>
+              <li>Substrate, decor, food bowls, and water bottles</li>
+            </ul>
+            <p class="content-p" style="font-size:0.82rem;margin-top:0.5rem;">Please disinfect cage donations before drop-off when possible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-band">
+      <div class="contact-section" style="grid-template-columns:1fr;max-width:560px;">
+        <div class="reveal" style="text-align:center;">
+          <p class="contact-biz" style="text-align:center;">The Animal Connection</p>
+          <p class="contact-line" style="text-align:center;">3401 Irving St., San Francisco, CA 94122<br />
+            Tel <a href="tel:4155646482">415-564-6482</a>
+          </p>
+          <p class="contact-hours-head" style="text-align:center;">Hours</p>
+          <p class="contact-line" style="text-align:center;">Mon–Sat: 11:00 AM – 6:00 PM &nbsp;·&nbsp; Sun: 12:00 PM – 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2025 The Animal Connection</span>
+    <span>3401 Irving St., San Francisco</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

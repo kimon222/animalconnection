@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boarding | The Animal Connection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .boarding-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    .boarding-col {
+      background: var(--ink-mid);
+      padding: 1.75rem 1.5rem;
+    }
+    .boarding-col-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .boarding-col-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    @media(max-width:900px) {
+      .boarding-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="read-progress"></div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <span class="logo-text">the animal connection</span>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="index.html#services">Services</a>
+          <ul class="dropdown">
+            <li><a href="boarding.html">Boarding</a></li>
+            <li><a href="grooming.html">Grooming</a></li>
+            <li><a href="surrender.html">Surrender</a></li>
+            <li><a href="keepyourpet.html">Pet Food Bank</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="page-hero-atmosphere"></div>
+      <div class="page-hero-content">
+        <div class="section-eyebrow reveal">Service · 30+ years experience</div>
+        <h1 class="page-hero-title reveal reveal-delay-1">
+          Animal <em>Boarding</em>
+        </h1>
+        <p class="page-hero-lead reveal reveal-delay-2">
+          We pride ourselves on the way we care for your animals. You won't find a more qualified, more compassionate group of experts to watch your pets while you're away.
+        </p>
+      </div>
+    </section>
+
+    <div class="page-content">
+
+      <!-- Who we board -->
+      <div class="content-section reveal">
+        <div class="section-eyebrow">Who we welcome</div>
+        <h2 class="content-h2">Animals we <em style="font-style:italic;color:var(--gold-light);">board</em></h2>
+        <div class="boarding-grid">
+          <div class="boarding-col">
+            <div class="boarding-col-icon">🐦</div>
+            <p class="boarding-col-title">Birds</p>
+            <p class="content-p" style="margin:0;font-size:0.88rem;">All birds — canaries, budgies, conures, parrots, finches, and more.</p>
+          </div>
+          <div class="boarding-col">
+            <div class="boarding-col-icon">🐹</div>
+            <p class="boarding-col-title">Small Mammals</p>
+            <p class="content-p" style="margin:0;font-size:0.88rem;">Guinea pigs, rabbits, hamsters, chinchillas, rats, and mice.</p>
+          </div>
+          <div class="boarding-col">
+            <div class="boarding-col-icon">🦎</div>
+            <p class="boarding-col-title">Reptiles &amp; Amphibians</p>
+            <p class="content-p" style="margin:0;font-size:0.88rem;">All reptiles and amphibians permitted in San Francisco. (No boas, pythons, front/rear-fanged or venomous animals per SF municipal code.)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- What to expect -->
+      <div class="content-section">
+        <div class="content-cols">
+          <div class="reveal">
+            <div class="section-eyebrow">Standards of care</div>
+            <h2 class="content-h2">What you can <em style="font-style:italic;color:var(--gold-light);">expect</em></h2>
+            <ul class="item-list">
+              <li>Fresh food and water provided every day</li>
+              <li>Animals cleaned and checked on throughout the day</li>
+              <li>Animals handled <strong>only</strong> by Animal Connection staff (or vet if necessary)</li>
+            </ul>
+            <div class="section-eyebrow" style="margin-top:1.5rem;">Complimentary house diet</div>
+            <div class="price-block">
+              <div class="price-block-head">Small Mammals</div>
+              <div class="price-block-body">
+                <p class="content-p" style="padding:0.75rem 0;margin:0;font-size:0.88rem;">Oxbow pellets, timothy hay, and fresh greens (typically romaine, dandelion greens, and other dark leafy greens)</p>
+              </div>
+            </div>
+            <div class="price-block">
+              <div class="price-block-head">Reptiles &amp; Amphibians</div>
+              <div class="price-block-body">
+                <p class="content-p" style="padding:0.75rem 0;margin:0;font-size:0.88rem;">Variety of bugs (crickets, mealworms, dubia roaches, waxworms) and fresh greens depending on diet requirements</p>
+              </div>
+            </div>
+            <div class="price-block">
+              <div class="price-block-head">Birds</div>
+              <div class="price-block-body">
+                <p class="content-p" style="padding:0.75rem 0;margin:0;font-size:0.88rem;">Species-appropriate seeds and occasional treats</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="section-eyebrow">Fees</div>
+            <h2 class="content-h2">Boarding <em style="font-style:italic;color:var(--gold-light);">rates</em></h2>
+            <div class="price-block">
+              <div class="price-block-head">Per Night</div>
+              <div class="price-block-body">
+                <div class="fee-row">
+                  <span class="fee-name">Own cage</span>
+                  <span class="fee-price">$15 / day</span>
+                </div>
+                <div class="fee-row">
+                  <span class="fee-name">Rental cage</span>
+                  <span class="fee-price">$20 / day</span>
+                </div>
+              </div>
+            </div>
+            <p class="content-p" style="font-size:0.82rem;margin-top:0.75rem;">* All boarders must arrive in appropriately sized, clean cages. Please bring a sizable cage — it will be your pet's only space for their stay.</p>
+
+            <div class="section-eyebrow" style="margin-top:2rem;">Before you drop off</div>
+            <ul class="item-list">
+              <li>Cage must be clean and in good condition</li>
+              <li>Bring the lid — we <strong>do not accept</strong> open-top cages or tanks</li>
+              <li>Bring your animal's specific diet and any treats</li>
+              <li>Notify us of any special medical instructions ahead of time</li>
+              <li>Make a reservation — we fill up during holidays and summers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="reveal" style="text-align:center;padding:2rem 0;">
+        <a href="contact.html" class="btn">Reserve a Boarding Spot</a>
+      </div>
+
+    </div>
+
+    <div class="contact-band">
+      <div class="contact-section" style="grid-template-columns:1fr;max-width:560px;">
+        <div class="reveal" style="text-align:center;">
+          <p class="contact-biz" style="text-align:center;">The Animal Connection</p>
+          <p class="contact-line" style="text-align:center;">3401 Irving St., San Francisco, CA 94122<br />
+            Tel <a href="tel:4155646482">415-564-6482</a> &nbsp;·&nbsp; SMS <a href="sms:4152751139">415-275-1139</a>
+          </p>
+          <p class="contact-hours-head" style="text-align:center;">Hours</p>
+          <p class="contact-line" style="text-align:center;">Mon–Sat: 11:00 AM – 6:00 PM &nbsp;·&nbsp; Sun: 12:00 PM – 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2025 The Animal Connection, San Francisco</span>
+    <span>3401 Irving St. &nbsp;·&nbsp; <a href="tel:4155646482">415-564-6482</a></span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
