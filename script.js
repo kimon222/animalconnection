@@ -112,7 +112,8 @@
                 hint = 'RESEND_API_KEY is not set for this deployment (check Vercel → Settings → Environment Variables).';
               } else if (data && data.code === 'resend') {
                 hint =
-                  'Resend blocked this send. On the free test address (onboarding@resend.dev) you can usually only mail your own signup email until you verify a domain — set RESEND_TO to that email in Vercel, or add and verify your domain in Resend and update RESEND_FROM.';
+                  (data.resendMessage ? data.resendMessage + ' ' : '') +
+                  'If using onboarding@resend.dev: remove RESEND_TO in Vercel (or set it to your Resend login email) — that variable overrides the app default. Then redeploy.';
               } else {
                 hint = 'Request failed (' + res.status + ').';
               }

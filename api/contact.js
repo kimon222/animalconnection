@@ -60,6 +60,8 @@ export default async function handler(req, res) {
     return;
   }
 
+  // RESEND_TO in Vercel / .env.local overrides this default. If you still see sandbox errors,
+  // remove RESEND_TO from Vercel or set it to the exact email you use to log into Resend.
   const to = process.env.RESEND_TO || DEFAULT_TO;
   const from = process.env.RESEND_FROM || 'onboarding@resend.dev';
 
@@ -70,18 +72,29 @@ export default async function handler(req, res) {
 <p><strong>Message:</strong></p>
 <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>`;
 
-  const { error } = await resend.emails.send({
+  const emailPayload = {
     from,
     to,
-    replyTo: email,
     subject: `New message from ${name}`,
     text,
     html,
-  });
+  };
+
+  // Sandbox sender often rejects replyTo to arbitrary addresses; customer email stays in body.
+  const sandboxFrom = from.includes('@resend.dev');
+  if (!sandboxFrom) {
+    emailPayload.replyTo = email;
+  }
+
+  const { error } = await resend.emails.send(emailPayload);
 
   if (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to send', code: 'resend' });
+    console.error('Resend send failed', { to, from, sandboxFrom, error });
+    res.status(500).json({
+      error: 'Failed to send',
+      code: 'resend',
+      resendMessage: error.message || String(error),
+    });
     return;
   }
 
