@@ -95,15 +95,43 @@
         body: JSON.stringify(payload),
       })
         .then(function (res) {
-          if (!res.ok) throw new Error('Request failed');
-          return res.json();
+          return res.text().then(function (text) {
+            var data = null;
+            try {
+              data = text ? JSON.parse(text) : null;
+            } catch (parseErr) {
+              console.error('Contact API non-JSON response', res.status, text);
+            }
+            if (!res.ok) {
+              console.error('Contact API error', res.status, data || text);
+              var hint;
+              if (res.status === 404) {
+                hint =
+                  'Form endpoint not found — deploy on Vercel with the project root that contains the api/ folder.';
+              } else if (data && data.error === 'missing_api_key') {
+                hint = 'RESEND_API_KEY is not set for this deployment (check Vercel → Settings → Environment Variables).';
+              } else if (data && data.code === 'resend') {
+                hint =
+                  'Resend blocked this send. On the free test address (onboarding@resend.dev) you can usually only mail your own signup email until you verify a domain — set RESEND_TO to that email in Vercel, or add and verify your domain in Resend and update RESEND_FROM.';
+              } else {
+                hint = 'Request failed (' + res.status + ').';
+              }
+              throw new Error(hint);
+            }
+            return data;
+          });
         })
         .then(function () {
           alert('Message sent!');
           form.reset();
         })
-        .catch(function () {
-          alert('Something went wrong. Please try again or email us directly.');
+        .catch(function (err) {
+          console.error(err);
+          alert(
+            err && err.message
+              ? err.message
+              : 'Something went wrong. Please try again or email animalconnectionsf@gmail.com.'
+          );
         })
         .finally(function () {
           if (btn) btn.disabled = false;
