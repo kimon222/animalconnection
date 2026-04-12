@@ -1,7 +1,18 @@
 import { Resend } from 'resend';
 
-/** Verified inbox for notifications. With onboarding@resend.dev, Resend only delivers to allowed addresses — often your Resend login email until you add a verified domain. Override in Vercel: RESEND_TO */
-const DEFAULT_TO = 'animalconnectionsf@gmail.com';
+/**
+ * Resend sandbox (`onboarding@resend.dev`) only delivers to your Resend account email.
+ * Override when your domain is verified in Resend: set RESEND_TO=animalconnectionsf@gmail.com (and RESEND_FROM) in Vercel or .env.local.
+ */
+const DEFAULT_TO = 'kimonmono986@gmail.com';
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 
 function getResend() {
   const key = process.env.RESEND_API_KEY;
@@ -52,12 +63,20 @@ export default async function handler(req, res) {
   const to = process.env.RESEND_TO || DEFAULT_TO;
   const from = process.env.RESEND_FROM || 'onboarding@resend.dev';
 
+  const text = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
+  const html = `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> <a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a></p>
+<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+<p><strong>Message:</strong></p>
+<p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>`;
+
   const { error } = await resend.emails.send({
     from,
     to,
     replyTo: email,
     subject: `New message from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
+    text,
+    html,
   });
 
   if (error) {
