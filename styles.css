@@ -126,25 +126,31 @@ img { max-width: 100%; height: auto; display: block; }
   top: calc(100% + 10px);
   left: auto;
   right: 0;
+  /* Size to longest label — do not cap width or “Pet Food Bank” can clip at zoom / large text */
   width: max-content;
-  min-width: 12.5rem;
-  max-width: min(22rem, calc(100vw - 3rem));
+  min-width: 13.75rem;
+  max-width: none;
   box-sizing: border-box;
+  overflow: visible;
   background: rgba(18, 16, 12, 0.98);
   border: 1px solid var(--border-mid);
   border-radius: 8px;
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem 0.75rem;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
   transition: all 0.25s var(--ease-film);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 .main-nav .has-dropdown:hover .dropdown,
 .main-nav .has-dropdown.is-open .dropdown {
   opacity: 1; visibility: visible; transform: translateY(0);
 }
-.main-nav .dropdown li { list-style: none; }
+.main-nav .dropdown li {
+  list-style: none;
+  overflow: visible;
+}
 .main-nav .dropdown a {
   display: block;
   padding: 0.5rem 0.85rem;
@@ -153,6 +159,7 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.04em;
   font-size: 0.82rem;
   white-space: nowrap;
+  overflow: visible;
 }
 .main-nav .dropdown a:hover { background: var(--cream-ghost); color: var(--gold-light); }
 
