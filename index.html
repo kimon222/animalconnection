@@ -26,10 +26,10 @@
     }
     .parade-item {
       font-size: clamp(3rem, 5vw, 5.5rem);
-      opacity: 0.055;
+      opacity: 0.11;
       animation: paradeFloat var(--dur, 6s) ease-in-out infinite alternate;
       transform-origin: bottom center;
-      filter: grayscale(1);
+      filter: grayscale(0.35) saturate(1.1);
       flex-shrink: 0;
       padding: 0 0.5rem;
     }
@@ -116,7 +116,7 @@
 
     /* NEW ownership banner */
     .ownership-banner {
-      background: linear-gradient(90deg, rgba(201,151,58,0.12) 0%, rgba(201,151,58,0.06) 50%, transparent 100%);
+      background: linear-gradient(90deg, rgba(95,143,82,0.14) 0%, rgba(95,143,82,0.06) 50%, transparent 100%);
       border: 1px solid var(--border-mid);
       border-radius: 6px;
       padding: 1.1rem 1.5rem;
@@ -134,8 +134,8 @@
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(201,151,58,0.4); }
-      50% { box-shadow: 0 0 0 6px rgba(201,151,58,0); }
+      0%,100% { box-shadow: 0 0 0 0 rgba(95,143,82,0.45); }
+      50% { box-shadow: 0 0 0 6px rgba(95,143,82,0); }
     }
     .ownership-banner-text {
       font-size: 0.88rem;
@@ -267,6 +267,43 @@
       </div>
     </div>
 
+    <!-- ════ PET PHOTO STRIP ════ -->
+    <section class="pet-strip" aria-labelledby="pet-strip-heading">
+      <div class="pet-strip-inner">
+        <div class="pet-strip-header">
+          <div class="section-eyebrow">In our care</div>
+          <h2 id="pet-strip-heading" class="section-title" style="font-size:clamp(1.85rem,3.5vw,3rem);margin-bottom:0;">Feathers, scales &amp; <em>small companions</em></h2>
+          <p class="section-lead" style="margin:1rem auto 0;max-width:42ch;text-align:center;">A glimpse of the birds, mammals, reptiles, and fish our team loves to help you care for — the same way we’d care for our own.</p>
+        </div>
+        <div class="pet-strip-grid">
+          <figure class="pet-strip-card">
+            <div class="pet-strip-thumb">
+              <img class="pet-strip-img" src="images/handfed-budgie.png" alt="Hand-fed baby budgie perched calmly, from our store." width="320" height="400" loading="eager" decoding="async" fetchpriority="high" />
+            </div>
+            <figcaption class="pet-strip-cap">Birds &amp; budgies</figcaption>
+          </figure>
+          <figure class="pet-strip-card">
+            <div class="pet-strip-thumb">
+              <img class="pet-strip-img" src="images/pets/guinea-pig.jpg" alt="Guinea pig resting on a soft blanket." width="320" height="400" loading="eager" decoding="async" />
+            </div>
+            <figcaption class="pet-strip-cap">Small mammals</figcaption>
+          </figure>
+          <figure class="pet-strip-card">
+            <div class="pet-strip-thumb">
+              <img class="pet-strip-img" src="images/pets/reptile.jpg" alt="Bearded dragon perched on a branch." width="320" height="400" loading="eager" decoding="async" />
+            </div>
+            <figcaption class="pet-strip-cap">Reptiles</figcaption>
+          </figure>
+          <figure class="pet-strip-card">
+            <div class="pet-strip-thumb">
+              <img class="pet-strip-img" src="images/pets/fish.jpg" alt="Tropical fish swimming in an aquarium." width="320" height="400" loading="eager" decoding="async" />
+            </div>
+            <figcaption class="pet-strip-cap">Aquatics</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ════ NEW OWNERSHIP / MISSION ════ -->
     <div style="background:var(--ink);">
       <div class="mission">
@@ -329,7 +366,7 @@
 
         <!-- Pet Food Bank bonus card -->
         <div class="reveal reveal-delay-2" style="margin-top:1.5px;">
-          <div style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:1.5rem 2rem;background:rgba(201,151,58,0.05);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+          <div style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:1.5rem 2rem;background:rgba(95,143,82,0.07);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
             <div>
               <div class="section-eyebrow" style="margin-bottom:0.3rem;">Community</div>
               <p style="font-family:var(--serif);font-size:1.2rem;color:var(--cream);">Pet Food Bank — <em>free food for pets in need</em></p>

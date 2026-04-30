@@ -37,6 +37,24 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach(function (el) { observer.observe(el); });
+
+    /* Anything already in view on load (or above the reveal threshold) should appear immediately */
+    function revealIfVisible(el) {
+      var rect = el.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top < vh * 0.92 && rect.bottom > -vh * 0.08) {
+        el.classList.add('revealed');
+        observer.unobserve(el);
+      }
+    }
+    reveals.forEach(revealIfVisible);
+    window.addEventListener(
+      'load',
+      function () {
+        reveals.forEach(revealIfVisible);
+      },
+      { once: true }
+    );
   } else {
     /* Fallback: show all immediately */
     reveals.forEach(function (el) { el.classList.add('revealed'); });
