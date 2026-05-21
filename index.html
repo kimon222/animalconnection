@@ -7,10 +7,19 @@
   <meta name="description" content="San Francisco's largest independent pet store since 1987. Boarding, grooming, rescue, and the best premium pet supplies in the city." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=15" />
   <style>
     /* ── Homepage-specific additions ── */
+
+    /* Headline accents + service numbers (inline beats stale cache) */
+    .hero-headline em,
+    .section-title em,
+    .page-hero-title em {
+      color: #2a7340 !important;
+    }
+    .service-num { color: #2d6b40 !important; }
+    .service-card:hover .service-num { color: #2d6b40 !important; }
 
     /* Hero animal emoji parade */
     .hero-parade {
@@ -58,11 +67,6 @@
     }
     .stat:last-child { border-right: none; }
     .stat-number {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
       margin-bottom: 0.4rem;
     }
     .stat-label {
@@ -89,6 +93,7 @@
       font-family: var(--serif);
       font-size: clamp(1.5rem, 2.8vw, 2.4rem);
       font-weight: 300;
+      font-style: italic;
       font-style: italic;
       line-height: 1.35;
       color: var(--cream);
@@ -143,7 +148,7 @@
       line-height: 1.65;
       color: var(--cream-dim);
     }
-    .ownership-banner-text strong { color: var(--gold-light); font-weight: 500; }
+    .ownership-banner-text strong { color: var(--accent); font-weight: 500; }
 
     @media (max-width: 900px) {
       .stat-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 0 1.5rem; }
@@ -162,7 +167,7 @@
   <header class="site-header">
     <div style="display:flex;align-items:center;gap:0.75rem;">
       <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+        <img src="images/logo.png" alt="" class="logo-img" width="64" height="64" />
         <span class="logo-text">the animal connection</span>
       </a>
     </div>
@@ -226,16 +231,23 @@
       </div>
 
       <div class="hero-content reveal">
-        <p class="hero-since">Est. 1987 &nbsp;·&nbsp; San Francisco, California</p>
-        <h1 class="hero-headline">
-          Where <em>every</em><br />animal<br /><strong>is family.</strong>
-        </h1>
-        <p class="hero-sub">
-          San Francisco's largest independent pet store. Not your typical pet shop — we are lifelong animal lovers who carry premium supplies, board and groom small animals, rescue pets in need, and have called Irving Street home for nearly four decades.
-        </p>
-        <div class="hero-actions">
-          <a href="contact.html" class="btn">Get in Touch</a>
-          <a href="#services" class="btn btn-ghost">Our Services</a>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="hero-since">Est. 1987 &nbsp;·&nbsp; San Francisco, CA</p>
+            <h1 class="hero-headline">
+              Where <em>every</em><br />animal<br /><strong>is family.</strong>
+            </h1>
+            <p class="hero-sub">
+              San Francisco's largest independent pet store. Not your typical pet shop — we are lifelong animal lovers who carry premium supplies, board and groom small animals, rescue pets in need, and have called Irving Street home for nearly four decades.
+            </p>
+            <div class="hero-actions">
+              <a href="contact.html" class="btn">Get in Touch</a>
+              <a href="#services" class="btn btn-ghost">Our Services</a>
+            </div>
+          </div>
+          <figure class="hero-photo">
+            <img src="images/hero-rabbit.jpg" alt="A gentle lop-eared rabbit sitting in fresh hay." width="380" height="271" loading="eager" decoding="async" />
+          </figure>
         </div>
       </div>
 
@@ -284,13 +296,13 @@
           </figure>
           <figure class="pet-strip-card">
             <div class="pet-strip-thumb">
-              <img class="pet-strip-img" src="images/pets/guinea-pig.jpg" alt="Guinea pig resting on a soft blanket." width="320" height="400" loading="eager" decoding="async" />
+              <img class="pet-strip-img" src="images/pets/guinea-pig.jpg?v=3" alt="Black and white guinea pig eating lettuce in its enclosure." width="320" height="400" loading="eager" decoding="async" />
             </div>
             <figcaption class="pet-strip-cap">Small mammals</figcaption>
           </figure>
           <figure class="pet-strip-card">
             <div class="pet-strip-thumb">
-              <img class="pet-strip-img" src="images/pets/reptile.jpg" alt="Bearded dragon perched on a branch." width="320" height="400" loading="eager" decoding="async" />
+              <img class="pet-strip-img" src="images/pets/bearded-dragon.jpg?v=4" alt="Bearded dragon close-up beside fresh greens." width="320" height="400" loading="eager" decoding="async" />
             </div>
             <figcaption class="pet-strip-cap">Reptiles</figcaption>
           </figure>
@@ -369,7 +381,7 @@
           <div style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:1.5rem 2rem;background:rgba(95,143,82,0.07);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
             <div>
               <div class="section-eyebrow" style="margin-bottom:0.3rem;">Community</div>
-              <p style="font-family:var(--serif);font-size:1.2rem;color:var(--cream);">Pet Food Bank — <em>free food for pets in need</em></p>
+              <p style="font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--cream);">Pet Food Bank — <em>free food for pets in need</em></p>
             </div>
             <a href="keepyourpet.html" class="btn btn-ghost" style="white-space:nowrap;flex-shrink:0;">Find out more</a>
           </div>
@@ -416,7 +428,7 @@
         </div>
         <div class="greens-grid reveal reveal-delay-1">
           <div class="greens-col yes">
-            <div class="greens-col-head yes">✓ &nbsp;Acceptable produce</div>
+            <div class="greens-col-head yes">✔ &nbsp;Acceptable produce</div>
             <ul>
               <li>Romaine, Red &amp; Green leaf lettuce</li>
               <li>Dandelion Greens</li>
@@ -427,7 +439,7 @@
             </ul>
           </div>
           <div class="greens-col no">
-            <div class="greens-col-head no">✕ &nbsp;Please avoid</div>
+            <div class="greens-col-head no">✘ &nbsp;Please avoid</div>
             <ul>
               <li>Iceberg lettuce</li>
               <li>Cucumber</li>

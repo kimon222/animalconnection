@@ -6,8 +6,8 @@
   <title>Boarding | The Animal Connection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=15" />
   <style>
     .boarding-grid {
       display: grid;
@@ -27,7 +27,8 @@
     .boarding-col-title {
       font-family: var(--serif);
       font-size: 1.15rem;
-      color: var(--gold-light);
+      font-weight: 400;
+      color: var(--accent);
       margin-bottom: 0.6rem;
     }
     @media(max-width:900px) {
@@ -40,7 +41,7 @@
 
   <header class="site-header">
     <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+      <img src="images/logo.png" alt="" class="logo-img" width="64" height="64" />
       <span class="logo-text">the animal connection</span>
     </a>
     <button type="button" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -82,7 +83,7 @@
       <!-- Who we board -->
       <div class="content-section reveal">
         <div class="section-eyebrow">Who we welcome</div>
-        <h2 class="content-h2">Animals we <em style="font-style:italic;color:var(--gold-light);">board</em></h2>
+        <h2 class="content-h2">Animals we <em>board</em></h2>
         <div class="boarding-grid">
           <div class="boarding-col">
             <div class="boarding-col-icon">🐦</div>
@@ -107,7 +108,7 @@
         <div class="content-cols">
           <div class="reveal">
             <div class="section-eyebrow">Standards of care</div>
-            <h2 class="content-h2">What you can <em style="font-style:italic;color:var(--gold-light);">expect</em></h2>
+            <h2 class="content-h2">What you can <em>expect</em></h2>
             <ul class="item-list">
               <li>Fresh food and water provided every day</li>
               <li>Animals cleaned and checked on throughout the day</li>
@@ -135,7 +136,7 @@
           </div>
           <div class="reveal reveal-delay-2">
             <div class="section-eyebrow">Fees</div>
-            <h2 class="content-h2">Boarding <em style="font-style:italic;color:var(--gold-light);">rates</em></h2>
+            <h2 class="content-h2">Boarding <em>rates</em></h2>
             <div class="price-block">
               <div class="price-block-head">Per Night</div>
               <div class="price-block-body">
