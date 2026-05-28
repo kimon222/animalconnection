@@ -4,7 +4,7 @@ import { Resend } from 'resend';
  * Resend sandbox (`onboarding@resend.dev`) only delivers to your Resend account email.
  * Override when your domain is verified in Resend: set RESEND_TO=animalconnectionsf@gmail.com (and RESEND_FROM) in Vercel or .env.local.
  */
-const DEFAULT_TO = 'kimonmono986@gmail.com';
+const DEFAULT_TO = 'animalconnectionsf@gmail.com';
 
 function escapeHtml(s) {
   return String(s)
