@@ -309,7 +309,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr minmax(240px, 380px);
+  grid-template-columns: 1fr minmax(220px, 340px);
   gap: 2rem 2.5rem;
   align-items: end;
   width: 100%;
@@ -325,7 +325,7 @@ img { max-width: 100%; height: auto; display: block; }
   justify-self: end;
   align-self: center;
   width: 100%;
-  max-width: 380px;
+  max-width: 340px;
   position: relative;
 }
 
@@ -1246,6 +1246,14 @@ img { max-width: 100%; height: auto; display: block; }
   object-position: center;
   transition: transform 0.5s var(--ease-film);
 }
+.pet-strip-img--mammals {
+  object-position: center 40%;
+  transform: scale(1);
+  transform-origin: center 40%;
+}
+.pet-strip-card:hover .pet-strip-img--mammals {
+  transform: scale(1.04);
+}
 .pet-strip-cap {
   padding: 0.85rem 1rem 1rem;
   font-family: var(--sans);
@@ -1302,7 +1310,7 @@ img { max-width: 100%; height: auto; display: block; }
   .hero-photo {
     order: -1;
     justify-self: center;
-    max-width: min(340px, 92vw);
+    max-width: min(300px, 88vw);
   }
   .hero-scroll { display: none; }
 
